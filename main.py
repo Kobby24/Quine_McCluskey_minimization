@@ -28,14 +28,24 @@ class Quine_McCluskey:
     def Comparing(self):
         groups = self.Groups()
         n = 1
+        h = 0
         for group,term in groups.items():
             if n < len(groups):
                 nxt_term = list(groups.keys())[n]
+
+                nxt_minterm = groups[nxt_term]
+                # print(term[0],groups[nxt_term])
+                for i in term:
+                    for x in nxt_minterm:
+                        for j in range(len(i)):
+                            h += int(i[j]) - int(x[j])
+                        if h == -1 or h == 1:
+                            print(i,x)
                 n += 1
-                print(term,groups[nxt_term])
+
+
+m = Quine_McCluskey()
+m.Comparing()
 
 
 
-
-MQ = Quine_McCluskey()
-MQ.Comparing()
