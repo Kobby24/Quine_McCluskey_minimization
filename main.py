@@ -22,8 +22,20 @@ class Quine_McCluskey:
                 groups[f'G{term.count("1")}'] = [term]
             else:
                 G.append(term)
-        print(groups)
+
+        return groups
+
+    def Comparing(self):
+        groups = self.Groups()
+        n = 1
+        for group,term in groups.items():
+            if n < len(groups):
+                nxt_term = list(groups.keys())[n]
+                n += 1
+                print(term,groups[nxt_term])
+
+
 
 
 MQ = Quine_McCluskey()
-MQ.Groups()
+MQ.Comparing()
